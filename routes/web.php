@@ -22,7 +22,7 @@ Route::get('blog/{slug}','BlogController@showPost');
 Route::get('admin',function (){
     return redirect('/admin/post');
 });
-Route::group(['namespace'=>'Admin'],function (){
+Route::group(['namespace'=>'Admin','middleware'=>'auth'],function (){
     Route::resource('admin/post','PostController');
     Route::resource('admin/tag','TagController');
     Route::get('admin/upload','UploadController@index');
@@ -32,6 +32,6 @@ Route::group(['namespace'=>'Admin'],function (){
     Route::delete('admin/upload/folder', 'UploadController@deleteFolder');
 });
 //login in/out
-Route::get('auth/login','Auth\AuthController@getLogin');
-Route::post('auth/login','Auth\AuthController@postLogin');
+Route::get('auth/login','Auth\AuthController@getLogin')->name('login');
+Route::post('auth/login','Auth\AuthController@login');
 Route::get('auth/logout','Auth\AuthController@getLogout');

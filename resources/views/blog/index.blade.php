@@ -22,7 +22,7 @@
     <hr>
     {!! $posts->render() !!}
     <hr>
-    {{$posts->appends(['s'=>'vote'])->links()}}
+{{--    {{$posts->appends(['s'=>'vote'])->links()}}--}}
 </div>
 </body>
 </html>

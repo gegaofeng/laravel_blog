@@ -12,13 +12,18 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class AuthController extends Controller
 {
     //
-    public function getLogin(){
-        return view('auth.login');
-    }
-    use AuthenticatesUsers, ThrottlesLogins;
+    use AuthenticatesUsers;
 
     protected $redirectAfterLogout = '/auth/login';
-    protected $redirectTo = '/admin/post';
+    protected $redirectTo          = '/admin/post';
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getLogin()
+    {
+        return view('auth.login');
+    }
 
     /**
      * Create a new authentication controller instance.
@@ -28,6 +33,14 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+    public function getLogout(Request $request)
+    {
+        $this->guard()->logout();
+
+        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect($this->getRedirectAfterLogout());
+    }
     /**
      * Get a validator for an incoming registration request.
      *
@@ -37,9 +50,13 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'name'     => 'required|max:255',
+            'email'    => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
-        ]);
+        ]
+        );
+    }
+    protected function getRedirectAfterLogout(){
+        return $this->redirectAfterLogout;
     }
 }

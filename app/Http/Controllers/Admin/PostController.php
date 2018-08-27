@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //
-        var_dump(Post::first());
+//        var_dump(Post::first());
         return view('admin.post.index')->withPosts(Post::all());
     }
 
