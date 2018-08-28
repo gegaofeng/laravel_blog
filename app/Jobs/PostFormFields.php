@@ -69,10 +69,11 @@ class PostFormFields implements ShouldQueue
         foreach ($fields as $fieldName => $fieldValue) {
             $fields[$fieldName] = old($fieldName, $fieldValue);
         }
-
+        //        var_dump(Tag::pluck('tag'));
         return array_merge(
             $fields,
-            ['allTags' => Tag::lists('tag')->all()]
+            ['allTags' => [1 => 'a']]
+        //            ['allTags' => Tag::pluck('tag')->all()]
         );
     }
 
@@ -94,7 +95,7 @@ class PostFormFields implements ShouldQueue
             $fields[$field] = $post->{$field};
         }
 
-        $fields['tags'] = $post->tags()->lists('tag')->all();
+        $fields['tags'] = $post->tags()->pluck('tag')->all();
 
         return $fields;
     }

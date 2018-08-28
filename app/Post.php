@@ -98,8 +98,9 @@ class Post extends Model
      */
     public function getPublishDateAttribute($value)
     {
-        return $this->published_at;
+//        return $this->published_at;
 //        return $this->published_at->format('M-j-Y');
+        return date_create($this->published_at) ->format('M-j-Y');
     }
 
     /**
@@ -107,8 +108,9 @@ class Post extends Model
      */
     public function getPublishTimeAttribute($value)
     {
-        return $this->published_at;
+//        return $this->published_at;
 //        return $this->published_at->format('g:i A');
+        return date_create($this->published_at)->format('g:i A');
     }
 
     /**

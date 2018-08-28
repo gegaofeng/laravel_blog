@@ -33,8 +33,9 @@
                         <tr>
                             <td data-order="{{ $post->published_at}}">
 {{--                            <td data-order="{{ $post->published_at->timestamp }}">--}}
-                                {{ $post->published_at }}
+{{--                                {{ $post->published_at }}--}}
 {{--                                {{ $post->published_at->format('j-M-y g:ia') }}--}}
+                                {{ date('j-M-y g:ia',strtotime($post->published_at)) }}
                             </td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->subtitle }}</td>
