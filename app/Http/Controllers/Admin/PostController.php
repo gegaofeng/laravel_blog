@@ -19,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         //
-//        var_dump(Post::first());
+        //        var_dump(Post::first());
         return view('admin.post.index')->withPosts(Post::all());
     }
 
@@ -31,8 +31,8 @@ class PostController extends Controller
     public function create()
     {
         //
-        $data = $this->dispatch(new PostFormFields());
-
+        $data = $this->dispatchNow(new PostFormFields());
+        //        var_dump($data);
         return view('admin.post.create', $data);
     }
 
@@ -46,17 +46,17 @@ class PostController extends Controller
     {
         //
         $post = Post::create($request->postFillData());
-        $post->syncTags($request->get('tags', []));
+        //        $post->syncTags($request->get('tags', []));
 
         return redirect()
-            ->route('admin.post.index')
+            ->route('post.index')
             ->withSuccess('New Post Successfully Created.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -67,27 +67,30 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $data = $this->dispatch(new PostFormFields($id));
-
+        //        var_dump($id);
+        $data = $this->dispatchNow(new PostFormFields($id));
+        //        var_dump($data);
         return view('admin.post.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(PostUpdateRequest $request, $id)
     {
         //
+        //        var_dump($request);
+        var_dump($id);
         $post = Post::findOrFail($id);
         $post->fill($request->postFillData());
         $post->save();
@@ -100,14 +103,15 @@ class PostController extends Controller
         }
 
         return redirect()
-            ->route('admin.post.index')
+            ->route('post.index')
             ->withSuccess('Post saved.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -118,7 +122,7 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()
-            ->route('admin.post.index')
+            ->route('post.index')
             ->withSuccess('Post deleted.');
     }
 }

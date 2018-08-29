@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
 @section('styles')
-    <link href="/assets/pickadate/themes/default.css" rel="stylesheet">
-    <link href="/assets/pickadate/themes/default.date.css" rel="stylesheet">
-    <link href="/assets/pickadate/themes/default.time.css" rel="stylesheet">
-    <link href="/assets/selectize/css/selectize.css" rel="stylesheet">
-    <link href="/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.css')}}" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.date.css')}}" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.time.css')}}" rel="stylesheet">
+    <link href="{{asset('js/selectize/css/selectize.css')}}" rel="stylesheet">
+    <link href="{{asset('js/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet">
 @stop
 
 @section('content')
@@ -27,7 +27,7 @@
                         @include('admin.partials.errors')
                         @include('admin.partials.success')
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.post.update', $id) }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('post.update', $id) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="PUT">
 
@@ -76,7 +76,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <form method="POST" action="{{ route('admin.post.destroy', $id) }}">
+                        <form method="POST" action="{{ route('post.destroy', $id) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="hidden" name="_method" value="DELETE">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -93,10 +93,10 @@
 @stop
 
 @section('scripts')
-    <script src="/assets/pickadate/picker.js"></script>
-    <script src="/assets/pickadate/picker.date.js"></script>
-    <script src="/assets/pickadate/picker.time.js"></script>
-    <script src="/assets/selectize/selectize.min.js"></script>
+    <script src="{{asset('js/pickadate/picker.js')}}"></script>
+    <script src="{{asset('js/pickadate/picker.date.js')}}"></script>
+    <script src="{{asset('js/pickadate/picker.time.js')}}"></script>
+    <script src="{{asset('js/selectize/js/selectize.min.js')}}"></script>
     <script>
         $(function() {
             $("#publish_date").pickadate({

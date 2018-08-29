@@ -1,11 +1,11 @@
 @extends('admin.layout')
 
 @section('styles')
-    <link href="/assets/pickadate/themes/default.css" rel="stylesheet">
-    <link href="/assets/pickadate/themes/default.date.css" rel="stylesheet">
-    <link href="/assets/pickadate/themes/default.time.css" rel="stylesheet">
-    <link href="/assets/selectize/css/selectize.css" rel="stylesheet">
-    <link href="/assets/selectize/css/selectize.bootstrap3.css" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.css')}}" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.date.css')}}" rel="stylesheet">
+    <link href="{{asset('js/pickadate/themes/default.time.css')}}" rel="stylesheet">
+    <link href="{{asset('js/selectize/css/selectize.css')}}" rel="stylesheet">
+    <link href="{{asset('js/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet">
 @stop
 
 @section('content')
@@ -26,7 +26,7 @@
 
                         @include('admin.partials.errors')
 
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.post.store') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('post.store') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @include('admin.post._form')
@@ -53,10 +53,10 @@
 @stop
 
 @section('scripts')
-    <script src="/assets/pickadate/picker.js"></script>
-    <script src="/assets/pickadate/picker.date.js"></script>
-    <script src="/assets/pickadate/picker.time.js"></script>
-    <script src="/assets/selectize/selectize.min.js"></script>
+    <script src="{{asset('js/pickadate/picker.js')}}"></script>
+    <script src="{{asset('js/pickadate/picker.date.js')}}"></script>
+    <script src="{{asset('js/pickadate/picker.time.js')}}"></script>
+    <script src="{{asset('js/selectize/js/selectize.min.js')}}"></script>
     <script>
         $(function() {
             $("#publish_date").pickadate({

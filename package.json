@@ -21,6 +21,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "bower": "^1.8.4"
+        "bower": "^1.8.4",
+        "pickadate": "^3.5.6"
     }
 }

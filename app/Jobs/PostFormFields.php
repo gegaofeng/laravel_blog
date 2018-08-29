@@ -43,7 +43,7 @@ class PostFormFields implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($id = null)
+    public function __construct($id=null)
     {
         //
         $this->id = $id;
@@ -72,8 +72,8 @@ class PostFormFields implements ShouldQueue
         //        var_dump(Tag::pluck('tag'));
         return array_merge(
             $fields,
-            ['allTags' => [1 => 'a']]
-        //            ['allTags' => Tag::pluck('tag')->all()]
+//            ['allTags' => [1 => 'a']]
+                            ['allTags' => Tag::pluck('tag')->all()]
         );
     }
 

@@ -32,6 +32,7 @@ class PostCreateRequest extends FormRequest
             'publish_date' => 'required',
             'publish_time' => 'required',
             'layout' => 'required',
+            'meta_description'=>'required',
         ];
     }
     /**

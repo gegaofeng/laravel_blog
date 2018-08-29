@@ -22,7 +22,7 @@ Route::get('blog/{slug}','BlogController@showPost');
 Route::get('admin',function (){
     return redirect('/admin/post');
 });
-Route::group(['namespace'=>'Admin','middleware'=>'auth'],function (){
+Route::group(['namespace'=>'admin','middleware'=>'auth'],function (){
     Route::resource('admin/post','PostController');
     Route::resource('admin/tag','TagController');
     Route::get('admin/upload','UploadController@index');

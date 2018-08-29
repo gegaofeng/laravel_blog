@@ -39,7 +39,7 @@ class Post extends Model
         $this->attributes['title'] = $value;
 
         if (!$this->exists) {
-            $this->setUniqueSlug($value, '');
+            $this->setUniqueSlug($value);
         }
     }
 
@@ -49,7 +49,7 @@ class Post extends Model
      * @param string $title
      * @param mixed $extra
      */
-    protected function setUniqueSlug($title, $extra)
+    protected function setUniqueSlug($title, $extra=0)
     {
         $slug = str_slug($title . '-' . $extra);
 
@@ -68,10 +68,11 @@ class Post extends Model
      */
     public function setContentRawAttribute($value)
     {
-        $markdown = new Markdowner();
+//        $markdown = new Markdowner();
 
         $this->attributes['content_raw'] = $value;
-        $this->attributes['content_html'] = $markdown->toHTML($value);
+//        $this->attributes['content_html'] = $markdown->toHTML($value);
+        $this->attributes['content_html'] = '$markdown->toHTML($value)';
     }
 
     /**
@@ -85,7 +86,7 @@ class Post extends Model
 
         if (count($tags)) {
             $this->tags()->sync(
-                Tag::whereIn('tag', $tags)->lists('id')->all()
+                Tag::whereIn('tag', $tags)->pluck('id')->all()
             );
             return;
         }
