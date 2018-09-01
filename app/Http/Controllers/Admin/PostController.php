@@ -31,7 +31,7 @@ class PostController extends Controller
     public function create()
     {
         //
-        $data = $this->dispatchNow(new PostFormFields());
+        $data = $this->dispatch(new PostFormFields());
         //        var_dump($data);
         return view('admin.post.create', $data);
     }
@@ -74,7 +74,7 @@ class PostController extends Controller
     {
         //
         //        var_dump($id);
-        $data = $this->dispatchNow(new PostFormFields($id));
+        $data = $this->dispatch(new PostFormFields($id));
         //        var_dump($data);
         return view('admin.post.edit', $data);
     }

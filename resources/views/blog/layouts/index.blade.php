@@ -32,7 +32,7 @@
                             @endif
                         </a>
                         <p class="post-meta">
-{{--                            Posted on {{ $post->published_at->format('F j, Y') }}--}}
+                            {{--                            Posted on {{ $post->published_at->format('F j, Y') }}--}}
                             Posted on {{ date('F j,Y',strtotime($post->published_at)) }}
                             @if ($post->tags->count())
                                 in
@@ -47,40 +47,45 @@
                 <ul class="pager">
 
                     {{-- Reverse direction --}}
-                    @if ($reverse_direction)
-                        @if ($posts->currentPage() > 1)
-                            <li class="previous">
-                                <a href="{!! $posts->url($posts->currentPage() - 1) !!}">
-                                    <i class="fa fa-long-arrow-left fa-lg"></i>
-                                    Previous {{ $tag->tag }} Posts
-                                </a>
-                            </li>
-                        @endif
-                        @if ($posts->hasMorePages())
-                            <li class="next">
-                                <a href="{!! $posts->nextPageUrl() !!}">
-                                    Next {{ $tag->tag }} Posts
-                                    <i class="fa fa-long-arrow-right"></i>
-                                </a>
-                            </li>
-                        @endif
+                    {{--@if ($reverse_direction)--}}
+                    {{--@if ($posts->currentPage() > 1)--}}
+                    {{--<li class="previous">--}}
+                    {{--<a href="{!! $posts->url($posts->currentPage() - 1) !!}">--}}
+                    {{--<i class="fa fa-long-arrow-left fa-lg"></i>--}}
+                    {{--Previous {{ $tag->tag }} Posts--}}
+                    {{--</a>--}}
+                    {{--</li>--}}
+                    {{--@endif--}}
+                    {{--@if ($posts->hasMorePages())--}}
+                    {{--<li class="next">--}}
+                    {{--<a href="{!! $posts->nextPageUrl() !!}">--}}
+                    {{--Next {{ $tag->tag }} Posts--}}
+                    {{--<i class="fa fa-long-arrow-right"></i>--}}
+                    {{--</a>--}}
+                    {{--</li>--}}
+                    {{--@endif--}}
+                    {{--@else--}}
+                    {{--@if ($posts->currentPage() > 1)--}}
+                    {{--<li class="previous">--}}
+                    {{--<a href="{!! $posts->url($posts->currentPage() - 1) !!}">--}}
+                    {{--<i class="fa fa-long-arrow-left fa-lg"></i>--}}
+                    {{--Newer {{ $tag ? $tag->tag : '' }} Posts--}}
+                    {{--</a>--}}
+                    {{--</li>--}}
+                    {{--@endif--}}
+                    {{--@if ($posts->hasMorePages())--}}
+                    {{--<li class="next">--}}
+                    {{--<a href="{!! $posts->nextPageUrl() !!}">--}}
+                    {{--Older {{ $tag ? $tag->tag : '' }} Posts--}}
+                    {{--<i class="fa fa-long-arrow-right"></i>--}}
+                    {{--</a>--}}
+                    {{--</li>--}}
+                    {{--@endif--}}
+                    {{--@endif--}}
+                    @if($tag)
+                        {{$posts->appends(array('tag'=>$tag->tag))->links()}}
                     @else
-                        @if ($posts->currentPage() > 1)
-                            <li class="previous">
-                                <a href="{!! $posts->url($posts->currentPage() - 1) !!}">
-                                    <i class="fa fa-long-arrow-left fa-lg"></i>
-                                    Newer {{ $tag ? $tag->tag : '' }} Posts
-                                </a>
-                            </li>
-                        @endif
-                        @if ($posts->hasMorePages())
-                            <li class="next">
-                                <a href="{!! $posts->nextPageUrl() !!}">
-                                    Older {{ $tag ? $tag->tag : '' }} Posts
-                                    <i class="fa fa-long-arrow-right"></i>
-                                </a>
-                            </li>
-                        @endif
+                        {{$posts->links()}}
                     @endif
                 </ul>
             </div>

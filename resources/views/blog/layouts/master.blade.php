@@ -8,11 +8,13 @@
     <meta name="author" content="{{ config('blog.author') }}">
 
     <title>{{ $title or config('blog.title') }}</title>
+    <link rel="alternate" type="application/rss+xml" href="{{url('rss')}}" title="RSS Feed {{config('blog.title')}}">
 
     {{-- Styles --}}
     <link href="{{asset('/css/clean-blog.css')}}" rel="stylesheet">
     <link href="{{asset('/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('/bootstrap/js/bootstrap.js')}}" rel="stylesheet">
+    <link href="{{asset('/font-awesome/css/font-awesome.min.css')}}">
     <script src="{{asset('/js/jquery.js')}}"></script>
     <script src="{{asset('/js/clean-blog.js')}}"></script>
     @yield('styles')
@@ -32,7 +34,7 @@
 @include('blog.partials.page-footer')
 
 {{-- Scripts --}}
-<script src="{{ asset ('/js/blog.js')}}"></script>
+{{--<script src="{{ asset ('/js/blog.js')}}"></script>--}}
 @yield('scripts')
 
 </body>

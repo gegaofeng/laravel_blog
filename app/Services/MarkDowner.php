@@ -8,6 +8,13 @@ use Michelf\SmartyPants;
 class Markdowner
 {
 
+    /**
+     * Notes:
+     * User:
+     * Date:2018/9/2
+     * @param $text
+     * @return mixed|string
+     */
     public function toHTML($text)
     {
         $text = $this->preTransformText($text);
@@ -17,11 +24,25 @@ class Markdowner
         return $text;
     }
 
+    /**
+     * Notes:
+     * User:
+     * Date:2018/9/2
+     * @param $text
+     * @return mixed
+     */
     protected function preTransformText($text)
     {
         return $text;
     }
 
+    /**
+     * Notes:
+     * User:
+     * Date:2018/9/2
+     * @param $text
+     * @return mixed
+     */
     protected function postTransformText($text)
     {
         return $text;
