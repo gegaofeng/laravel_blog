@@ -13,6 +13,7 @@
     <link href="{{asset('/css/clean-blog.css')}}" rel="stylesheet">
     <link href="{{asset('/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('/bootstrap/js/bootstrap.js')}}" rel="stylesheet">
+    <link href="{{asset('/font-awesome/css/font-awesome.min.css')}}">
     <script src="{{asset('/js/jquery.js')}}"></script>
     <script src="{{asset('/js/clean-blog.js')}}"></script>
     @yield('styles')

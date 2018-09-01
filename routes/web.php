@@ -35,3 +35,6 @@ Route::group(['namespace'=>'admin','middleware'=>'auth'],function (){
 Route::get('auth/login','Auth\AuthController@getLogin')->name('login');
 Route::post('auth/login','Auth\AuthController@login');
 Route::get('auth/logout','Auth\AuthController@getLogout');
+Route::get('view',function (){
+    return view('blog.layouts.index');
+});

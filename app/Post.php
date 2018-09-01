@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //
+    protected $primaryKey='id';
     protected $datas    = ['published_at'];
     protected $fillable = [
         'title', 'subtitle', 'content_raw', 'page_image', 'meta_description', 'layout', 'is_draft', 'published_at',];
@@ -21,14 +22,13 @@ class Post extends Model
     //            $this->attributes['slug']=str_slug($value);
     //        }
     //    }
+
     /**
-     * The many-to-many relationship between posts and tags.
-     *
-     * @return BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function tags()
     {
-        return $this->belongsToMany('App\Tag', 'post_tag_pivot');
+        return $this->belongsToMany('App\Tag', 'post_tag_pivot','post_id','tag_id');
     }
 
     /**

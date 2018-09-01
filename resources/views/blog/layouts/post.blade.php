@@ -13,7 +13,7 @@
                         <h1>{{ $post->title }}</h1>
                         <h2 class="subheading">{{ $post->subtitle }}</h2>
                         <span class="meta">
-              Posted on {{ $post->published_at->format('F j, Y') }}
+              Posted on {{ date('F j,Y',strtotime($post->published_at)) }}
                             @if ($post->tags->count())
                                 in
                                 {!! join(', ', $post->tagLinks()) !!}

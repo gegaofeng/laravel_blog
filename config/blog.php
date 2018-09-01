@@ -6,7 +6,7 @@ return [
     'description'    => '自己的博客',
     'author'         => '峰',
     'page_image'     => 'home-bg.jpg',
-    'posts_per_page' => 10,
+    'post_per_page' => 10,
     'uploads'        => [
         'storage' => 'local',
         'webpath' => '/uploads',

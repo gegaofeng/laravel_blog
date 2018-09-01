@@ -7,14 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     //
+    protected $primaryKey='id';
     protected $fillable = [
         'tag', 'title', 'subtitle', 'page_image', 'meta_description','reverse_direction',
     ];
 
+
     /**
-     * 定义文章与标签之间多对多关联关系
-     *
-     * @return BelongsToMany
+     * Notes:
+     * User:
+     * Date:2018/9/1
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function posts()
     {
@@ -45,8 +48,17 @@ class Tag extends Model
                            ]);
         }
     }
+
+    /**
+     * Notes:
+     * User:
+     * Date:2018/9/1
+     * @param $tag
+     * @param string $default
+     * @return string
+     */
     public static function layout($tag,$default='blog.layouts.index'){
-        $layout=static::whereTag($tag)->pluck('layout');
-        return $layout?:$default;
+        $layout=static::whereTag($tag)->pluck('layout')->toArray();
+        return $layout?$layout[0]:$default;
     }
 }
