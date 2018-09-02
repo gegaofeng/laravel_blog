@@ -2,7 +2,7 @@
 return [
     'name'          => 'My Blog',
     'title'         => 'My Blog',
-    'subtitle'      => 'http://laravelacademy.org',
+    'subtitle'      => 'http://www.blog.test',
     'description'   => '自己的博客',
     'author'        => '峰',
     'page_image'    => 'home-bg.jpg',
