@@ -9,6 +9,7 @@ use App\Services\SiteMap;
 use App\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 class BlogController extends Controller
 {
@@ -37,6 +38,7 @@ class BlogController extends Controller
     {
         $tag = $request->get('tag');
         $data = $this->dispatchNow(new BlogIndexData($tag));
+        //        $data=$this->dispatch(new BlogIndexData($tag));
         $layout=$tag?Tag::layout($tag):'blog.layouts.index';
 //        var_dump($data);
 //        var_dump($layout);

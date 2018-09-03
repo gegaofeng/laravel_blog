@@ -20,10 +20,11 @@ class RssFeed
      */
     public function getRSS()
     {
-        if (Cache::has('rss-feed')) {
-            return Cache::get('rss-feed');
-        }
+        //        if (Cache::has('rss-feed')) {
+        //            return Cache::get('rss-feed');
+        //        }
         $rss = $this->buildRssData();
+        //        $rss = '123222';
         Cache::add('rss-feed', $rss, 60);
         return $rss;
 
@@ -47,6 +48,7 @@ class RssFeed
             ->copyright('Copyright(c)' . config('blog.author'))
             ->lastBuildDate($now->timestamp)
             ->appendTo($feed);
+        //        var_dump($channel);
         $posts = Post::where('published_at', '<=', $now)
             ->where('is_draft', 0)
             ->orderBy('published_at', 'desc')
@@ -61,7 +63,8 @@ class RssFeed
                 ->guid($post->url(), true)
                 ->appendTo($channel);
         }
-        $feed = (string)$feed;
+        $feed = json_encode($feed);
+        var_dump($feed->channel());
         $feed = str_replace(
             '<rss version="2.0">',
             '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">',
@@ -73,6 +76,7 @@ class RssFeed
             '" rel="self" type="application/rss+xml" />',
             $feed
         );
+        //        return 'feed';
         return $feed;
     }
 }

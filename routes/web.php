@@ -21,8 +21,8 @@ Route::get('blog/{slug}','BlogController@showPost');
 //ContactMe
 Route::get('contact', 'ContactController@showForm');
 Route::post('contact', 'ContactController@sendContactInfo');
-//RSS
-Route::get('rss', 'BlogController@rss');
+//RSS待修复
+//Route::get('rss', 'BlogController@rss');
 //Admin
 Route::get('admin',function (){
     return redirect('/admin/post');

@@ -15,7 +15,7 @@
                     <li>
                         <a href="{{ url('rss') }}" data-toggle="tooltip"
                            title="RSS feed">
-              <span class="fa-stack fa-lg">
+                            <span class="fa-stack fa-lg">RSS
                 <i class="fa fa-circle fa-stack-2x"></i>
                 <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
               </span>
