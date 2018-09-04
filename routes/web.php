@@ -45,3 +45,5 @@ Route::get('view',function (){
 });
 //站点地图
 Route::get('sitemap.xml', 'BlogController@siteMap');
+//
+Route::get('time', 'ContactController@jobTest');

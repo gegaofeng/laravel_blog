@@ -35,9 +35,9 @@ return [
         ],
 
         'database' => [
-            'driver' => 'database',
-            'table' => 'jobs',
-            'queue' => 'default',
+            'driver'      => 'database',
+            'table'       => 'jobs',
+            'queue'       => '{default}',
             'retry_after' => 90,
         ],
 
@@ -58,11 +58,11 @@ return [
         ],
 
         'redis' => [
-            'driver' => 'redis',
-            'connection' => 'default',
-            'queue' => 'default',
-            'retry_after' => 90,
-            'block_for' => null,
+            'driver'      => 'redis',
+            'connection'  => 'default',
+            'queue'       => 'default',
+            'retry_after' => 10,
+            'block_for'   => null,
         ],
 
     ],

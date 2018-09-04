@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactMeRequest;
+use App\Jobs\JobTest;
 use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -35,5 +36,13 @@ class ContactController extends Controller
         //队列发送
         Mail::to(config('blog.contact_email'))->queue(new OrderShipped($data));
         return back()->withSuccess("Thank you for your message!");
+    }
+
+    public function jobTest()
+    {
+        //        return '1';
+        $this->dispatch((new JobTest()));
+        $this->dispatch((new JobTest())->onQueue('redis'));
+        $this->dispatch((new JobTest())->onQueue('test'));
     }
 }
