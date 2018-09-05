@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Support\Facades\DB;
 
 class JobTest implements ShouldQueue
 {
@@ -14,6 +15,7 @@ class JobTest implements ShouldQueue
 
     public $tries   = 3;
     public $timeout = 10;
+    public $queuename;
 
     /**
      * Create a new job instance.
@@ -23,6 +25,7 @@ class JobTest implements ShouldQueue
     public function __construct()
     {
         //
+        //        $this->queuename=$queuemame;
     }
 
     /**
@@ -33,6 +36,8 @@ class JobTest implements ShouldQueue
     public function handle()
     {
         //
+        //        $jobtest=new \App\JobTest();
+        //        $jobtest->store($this->queuename);
     }
 
     /**

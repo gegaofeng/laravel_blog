@@ -60,9 +60,10 @@ return [
         'redis' => [
             'driver'      => 'redis',
             'connection'  => 'default',
-            'queue'       => 'default',
+            'queue'       => '{default}',
             'retry_after' => 10,
             'block_for'   => null,
+            'expire'      => 60
         ],
 
     ],

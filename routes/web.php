@@ -47,3 +47,4 @@ Route::get('view',function (){
 Route::get('sitemap.xml', 'BlogController@siteMap');
 //
 Route::get('time', 'ContactController@jobTest');
+Route::get('data', 'ContactController@dataTest');

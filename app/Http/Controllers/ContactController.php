@@ -6,6 +6,7 @@ use App\Http\Requests\ContactMeRequest;
 use App\Jobs\JobTest;
 use App\Mail\OrderShipped;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -42,7 +43,14 @@ class ContactController extends Controller
     {
         //        return '1';
         $this->dispatch((new JobTest()));
-        $this->dispatch((new JobTest())->onQueue('redis'));
-        $this->dispatch((new JobTest())->onQueue('test'));
+        //        $this->dispatch(new JobTest());
+        //        $this->dispatch((new JobTest('redis'))->onQueue('redis'));
+        //        $this->dispatch((new JobTest('test'))->onQueue('test'));
+    }
+
+    public function dataTest()
+    {
+        $jobtest = new \App\JobTest();
+        $jobtest->store('test');
     }
 }
