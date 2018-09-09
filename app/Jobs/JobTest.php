@@ -22,10 +22,10 @@ class JobTest implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(string $queue_name = 'defaultname')
     {
         //
-        //        $this->queuename=$queuemame;
+        $this->queuename = $queue_name;
     }
 
     /**
@@ -36,8 +36,8 @@ class JobTest implements ShouldQueue
     public function handle()
     {
         //
-        //        $jobtest=new \App\JobTest();
-        //        $jobtest->store($this->queuename);
+        $jobtest = new \App\JobTest();
+        $jobtest->store($this->queuename);
     }
 
     /**

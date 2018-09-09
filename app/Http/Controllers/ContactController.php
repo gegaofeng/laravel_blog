@@ -42,10 +42,10 @@ class ContactController extends Controller
     public function jobTest()
     {
         //        return '1';
-        $this->dispatch((new JobTest()));
-        //        $this->dispatch(new JobTest());
-        //        $this->dispatch((new JobTest('redis'))->onQueue('redis'));
-        //        $this->dispatch((new JobTest('test'))->onQueue('test'));
+        $this->dispatch((new JobTest('default')));
+        $this->dispatch(new JobTest());
+        $this->dispatch((new JobTest('redis'))->onQueue('redis'));
+        $this->dispatch((new JobTest('test'))->onQueue('test'));
     }
 
     public function dataTest()
